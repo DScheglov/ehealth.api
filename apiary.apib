@@ -493,7 +493,7 @@ Methods returns list of labour_contracts by doctor_id or msp_id or both.
         - closed
     + offset: 0 (number, optional)
     + limit: 100 (number, optional)
-    
+
 + Request (application/json)
 
     + Headers
@@ -616,6 +616,40 @@ For security purposes, we will set `X-Frame-Options: deny` header that will disa
     + Headers
 
             X-CSRF-Token: my-csrf-token
+
+
+# Group Employees (Doctors, HRs, Accountants)
+
+## Search for Employees [GET /legal_entities/{legal_entity_id}/employees]
+
++ Parameters
+    + legal_entity_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (uuid, required) - the id of the employer legal entity
+
++ Request (application/json)
+
+    + Headers
+
+        Authorization: Bearer mF_9.B5f-4.1JqM
+
++ Response 200 (application/json)
+    + Attributes (Response_Collection)
+        + data (array[`Employee_Short`])
+
+## Get Employee details [GET /legal_entities/{legal_entity_id}/employees/{employee_id}]
+
++ Parameters
+    + legal_entity_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (uuid, required) - the id of the employer legal entity
+    + employee_id: `d290f1ee-6c54-4b01-90e6-d701748f0851` (uuid, required) - the id of the employee
+
++ Request (application/json)
+
+    + Headers
+
+        Authorization: Bearer mF_9.B5f-4.1JqM
+
++ Response 200 (application/json)
+    + Attributes (Response_OK)
+        + data (Employee_Details)
 
 ## Declaration requests [/mis/declaration_requests]
 
@@ -894,7 +928,7 @@ Message contains JSON object with structured data and printout template
             Authorization: Bearer mF_9.B5f-4.1JqM
 
     + Body
-            
+
             MIIWmAYJKoZIhvcNAQcCoIIWiTCCFoUCAQExCzAJBgUrDgMCGgUAMIISuwYJKoZI
             hvcNAQcBoIISrASCEqh7XHJ0ZjFcYW5zaVxhbnNpY3BnMTI1Mlxjb2NvYXJ0ZjE1
             MDRcY29jb2FzdWJydGY4MTANCntcZm9udHRibFxmMFxmc3dpc3NcZmNoYXJzZXQw
@@ -1043,7 +1077,7 @@ Uload files for offline patient verification
             Content-Length: 150
             Content-Range: bytes
     + Body
-    
+
             PDF CONTENT
 
 + Response 200 (application/json)
@@ -1135,7 +1169,7 @@ User_id or msp_id has to be passed.
         - closed
     + offset: 0 (number, optional)
     + limit: 100 (number, optional)
-    
+
 + Request (application/json)
 
     + Headers
@@ -1214,7 +1248,7 @@ This method allows to receive person declarations only referenced to current msp
 + Parameters
     + `edrpou`: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string, optional) - user_id of a doctor.
     + type: `d290f1ee-6c54-4b01-90e6-d701748f0851` (string, optional) - MSP ID.
-    
+
 + Request
 
     + Headers
@@ -1513,7 +1547,7 @@ This method allows to receive person declarations only referenced to current msp
     + include `Party_Short`
     + email: email@example.com (string, optional)
     + phones (array[Phone], optional)
-    
+
 ### `Employee_Request`
 + legal_entity_id: d290f1ee-6c54-4b01-90e6-d701748f0851 (string, required)
 + division_id: `b075f148-7f93-4fc2-b2ec-2d81b19a9b7b` (string, required)
